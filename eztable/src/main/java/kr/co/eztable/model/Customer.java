@@ -1,12 +1,21 @@
 package kr.co.eztable.model;
 
+import java.util.Date;
+
 public class Customer {
 	private String custCode;
 	private String custPhone;
 	private String custPassword;
 	private String custName;
 	private int cache;
+	private Date custRegDate;
 	
+	public Date getCustRegDate() {
+		return custRegDate;
+	}
+	public void setCustRegDate(Date custRegDate) {
+		this.custRegDate = custRegDate;
+	}
 	public String getCustCode() {
 		return custCode;
 	}
