@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.eztable.dao.CustomerDao;
 import kr.co.eztable.model.Customer;
+import kr.co.eztable.model.Pager;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -15,8 +16,29 @@ public class CustomerServiceImpl implements CustomerService {
 	CustomerDao dao;
 	
 	@Override
-	public List<Customer> list() {
-		return dao.list();
+	public List<Customer> list(Pager pager) {
+		int total = dao.total(pager);
+		
+		pager.setTotal(total);
+		
+		return dao.list(pager);
 	}
+
+	@Override
+	public void update(Customer item) {
+		dao.update(item);
+	}
+
+	@Override
+	public void delete(String custCode) {
+		dao.delete(custCode);
+	}
+
+	@Override
+	public void add(Customer item) {
+		dao.add(item);
+	}
+
+
 
 }

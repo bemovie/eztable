@@ -13,6 +13,10 @@
 		</div>
 		
 		<div>
+			총 고객 수 <fmt:formatNumber value="${pager.total}" pattern="#"></fmt:formatNumber> 명
+		</div>
+		
+		<div>
 			<table>
 				<thead>
 					<tr>
@@ -26,15 +30,16 @@
 				</thead>
 				<tbody>
 					<c:forEach var="item" items="${list}">
+					<form method="post" action="update/${item.custCode}">
 					<tr>
 						<td>${item.custCode}</td>
-						<td>${item.custName}</td>
-						<td>${item.custPhone}</td>
-						<td>${item.cache}</td>
+						<td><input type="text" name="custName" value="${item.custName}"></td>
+						<td><input type="text" name="custPhone" value="${item.custPhone}"></td>
+						<td><input type="number" name="cache" value="${item.cache}"></td>
 						<td><fmt:formatDate value="${item.custRegDate}" pattern="yyyy년 MM월 dd일"/></td>
 						<td>
-							<button><a href="delete/${item.custCode}" class="btn btn-danger btn-sm">수정</a></button> 
-							<button><a href="update/${item.custCode}" class="btn btn-warning btn-sm">삭제</a></button>
+							<button type="submit" class="btn btn-danger btn-sm">수정</button>
+							<button><a href="delete/${item.custCode}" class="btn btn-warning btn-sm">삭제</a></button>
 						</td>
 					</tr>
 					</c:forEach>	

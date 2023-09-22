@@ -7,4 +7,24 @@
 		SELECT * FROM customer
 	</select>
 	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM customer
+	</select>
+	
+	<update id="update">
+		UPDATE customer
+		SET cust_name = #{custName}, cust_phone = #{custPhone}, cache = #{cache}
+		WHERE cust_code = #{custCode}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM customer
+		WHERE cust_code = #{custCode}
+	</delete>
+	
+	<insert id="add">
+		INSERT INTO customer
+		VALUES ( #{custCode}, #{custPhone}, #{custPassword}, #{custName} )
+	</insert>
+
 </mapper>
